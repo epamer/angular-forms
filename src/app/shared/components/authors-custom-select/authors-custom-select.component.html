@@ -1,0 +1,33 @@
+<select
+    id="author"
+    class="form-control"
+    (change)="onSelectHandler($event)"
+    (blur)="onTouched()"
+    [disabled]="courseAuthors?.length === 3"
+>
+    <option value="">Select an authors..</option>
+    <option
+        *ngFor="let author of authors"
+        [value]="author.id"
+        [disabled]="isDisabled(author.id)"
+    >
+        {{ author.name }}
+    </option>
+</select>
+<div class="form-control mt-2 overflow-scroll">
+    <ul class="list-group list-group-horizontal">
+        <li
+            class="list-group-item px-2 py-0"
+            *ngFor="let author of courseAuthors"
+        >
+            {{ author.name }}
+            <button
+                type="button"
+                class="close ml-3"
+                (click)="onRemoveAuthor(author.id)"
+            >
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </li>
+    </ul>
+</div>
