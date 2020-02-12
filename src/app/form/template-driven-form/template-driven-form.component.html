@@ -73,6 +73,7 @@
                                     name="duration"
                                     [(ngModel)]="course.duration"
                                     #durationVar="ngModel"
+                                    appNumberValidator
                                     required
                                 />
                                 <div class="input-group-append">
@@ -86,6 +87,14 @@
                                     durationVar.hasError('required')
                                 "
                                 >This field is required
+                            </small>
+                            <small
+                                class="form-text text-danger"
+                                *ngIf="
+                                    durationVar.dirty &&
+                                    durationVar.hasError('number')
+                                "
+                                >{{ durationVar.errors.number.message }}
                             </small>
                         </div>
                         <div class="form-group">
