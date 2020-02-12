@@ -17,6 +17,9 @@ export class TemplateDrivenFormComponent implements OnInit {
 
     ngOnInit() {
         this.fetchAuthors();
+        // @note - initial values whose values neither null nor '' makes formControl dirty
+        // and may negatively affect validation process.
+        // That's why initial value of authors can't be []
         this.course = Course.getInitialState();
     }
 
