@@ -29,6 +29,6 @@ export class TemplateDrivenFormComponent implements OnInit {
 
     fetchAuthors(): void {
         // fake implementation of fetch
-        this.authors = authors.allIdis.map(id => authors[id]);
+        this.authors = Object.values(authors.byId);
     }
 }
