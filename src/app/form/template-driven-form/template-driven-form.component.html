@@ -7,7 +7,7 @@
         >
             <div class="container">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="name">Title</label>
                             <input
@@ -41,7 +41,7 @@
                             ></textarea>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="name">Start date</label>
                             <input
@@ -128,15 +128,24 @@
                             </small>
                         </div>
                     </div>
-                    <div class="col-4"></div>
                     <div class="col-12 d-flex justify-content-end">
-                        <button
-                            class="btn btn-outline-success center"
-                            type="submit"
-                            [disabled]="appForm.invalid"
-                        >
-                            Submit
-                        </button>
+                        <div class="btn-group">
+                            <button
+                                class="btn btn-outline-danger"
+                                type="button"
+                                (click)="appForm.reset()"
+                                [disabled]="appForm.pristine"
+                            >
+                                Reset
+                            </button>
+                            <button
+                                class="btn btn-outline-success"
+                                type="submit"
+                                [disabled]="appForm.invalid"
+                            >
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
