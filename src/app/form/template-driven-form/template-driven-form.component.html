@@ -52,6 +52,7 @@
                                 #creationDateVar="ngModel"
                                 name="creationDate"
                                 placeholder="dd/mm/yyyy"
+                                pattern="^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\d\d$"
                                 required
                             />
                             <small
@@ -61,6 +62,14 @@
                                     creationDateVar.hasError('required')
                                 "
                                 >This field is required
+                            </small>
+                            <small
+                                class="form-text text-danger"
+                                *ngIf="
+                                    creationDateVar.dirty &&
+                                    creationDateVar.hasError('pattern')
+                                "
+                                >This value should has dd/mm/yyyy format
                             </small>
                         </div>
                         <div class="form-group">
