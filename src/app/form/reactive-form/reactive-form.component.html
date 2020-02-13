@@ -1,1 +1,154 @@
-<p>reactive-form works!</p>
+<div class="container">
+    <div class="row">
+        <form
+            [formGroup]="courseForm"
+            (ngSubmit)="onSubmit()"
+            class="mt-4 flex-grow-1"
+        >
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input
+                                type="text"
+                                id="title"
+                                class="form-control"
+                                formControlName="title"
+                                placeholder="don't be worthy here :)"
+                            />
+                            <small
+                                class="form-text text-danger"
+                                *ngIf="
+                                    courseForm.get('title').touched &&
+                                    courseForm.get('title').hasError('required')
+                                "
+                                >This field is required
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea
+                                type="text"
+                                id="surname"
+                                class="form-control"
+                                formControlName="description"
+                                placeholder="write item description..."
+                            ></textarea>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="name">Start date</label>
+                            <input
+                                type="text"
+                                id="creationDate"
+                                class="form-control"
+                                formControlName="creationDate"
+                                placeholder="dd/mm/yyyy"
+                            />
+                            <small
+                                class="form-text text-danger"
+                                *ngIf="
+                                    courseForm.get('creationDate').touched &&
+                                    courseForm
+                                        .get('creationDate')
+                                        .hasError('required')
+                                "
+                                >This field is required
+                            </small>
+                            <small
+                                class="form-text text-danger"
+                                *ngIf="
+                                    courseForm.get('creationDate').dirty &&
+                                    courseForm
+                                        .get('creationDate')
+                                        .hasError('pattern')
+                                "
+                                >This value should has dd/mm/yyyy format
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Duration</label>
+                            <div class="input-group">
+                                <input
+                                    type="text"
+                                    id="duration"
+                                    class="form-control"
+                                    formControlName="duration"
+                                />
+                                <div class="input-group-append">
+                                    <span class="input-group-text">min</span>
+                                </div>
+                            </div>
+                            <small
+                                class="form-text text-danger"
+                                *ngIf="
+                                    courseForm.get('duration').touched &&
+                                    courseForm
+                                        .get('duration')
+                                        .hasError('required')
+                                "
+                                >This field is required
+                            </small>
+                            <small
+                                class="form-text text-danger"
+                                *ngIf="
+                                    courseForm.get('duration').dirty &&
+                                    courseForm
+                                        .get('duration')
+                                        .hasError('number')
+                                "
+                                >{{
+                                    courseForm.get('duration').errors.number
+                                        .message
+                                }}
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="author">Author</label>
+
+                            <!--  Here is an example how to define a component by the class name -->
+                            <div
+                                class="app-authors-select"
+                                [authors]="authors"
+                                [formControl]="courseForm.get('authors')"
+                            ></div>
+
+                            <small
+                                class="form-text text-danger"
+                                *ngIf="
+                                    courseForm.get('authors').touched &&
+                                    courseForm
+                                        .get('authors')
+                                        .hasError('required')
+                                "
+                                >This field is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <div class="btn-group">
+                            <button
+                                class="btn btn-outline-danger"
+                                type="button"
+                                (click)="onReset()"
+                                [disabled]="courseForm.pristine"
+                            >
+                                Reset
+                            </button>
+                            <button
+                                class="btn btn-outline-success"
+                                type="submit"
+                                [disabled]="courseForm.invalid"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -24,6 +24,6 @@ export class Course implements Course {
     ) {}
 
     static getInitialState() {
-        return new this(null, '', '', '', null, null);
+        return new this(null, null, null, null, null, []);
     }
 }
