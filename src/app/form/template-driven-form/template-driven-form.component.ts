@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { Author, Course } from '../../app.model';
@@ -8,6 +8,7 @@ import { authors } from '../../../fakeData';
     selector: 'app-template-driven-form',
     templateUrl: './template-driven-form.component.html',
     styleUrls: ['./template-driven-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TemplateDrivenFormComponent implements OnInit {
     authors: Author[] = [];
@@ -17,9 +18,6 @@ export class TemplateDrivenFormComponent implements OnInit {
 
     ngOnInit() {
         this.fetchAuthors();
-        // @note - initial values whose values neither null nor '' makes formControl dirty
-        // and may negatively affect validation process.
-        // That's why initial value of authors can't be []
         this.course = Course.getInitialState();
     }
 
