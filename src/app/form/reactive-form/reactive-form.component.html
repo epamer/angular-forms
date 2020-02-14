@@ -106,11 +106,16 @@
                             </small>
                         </div>
 
-                        <div
-                            class="form-group app-authors-select"
-                            [authors]="authors"
-                            [formControl]="courseForm.get('authors')"
-                        >
+                        <div class="form-group">
+                            <label for="author">Author</label>
+
+                            <!--  Here is an example how to define a component by the class name -->
+                            <div
+                                class="app-authors-select"
+                                [authors]="authors"
+                                [formControl]="courseForm.get('authors')"
+                            ></div>
+
                             <small
                                 class="form-text text-danger"
                                 *ngIf="
